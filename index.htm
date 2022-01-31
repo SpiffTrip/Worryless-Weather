@@ -4,25 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid="/>
 
+    
+    <link rel = "stylesheet" href="./assets/style.css"/>
     <title>Worryless Weather</title>
 </head>
 <body>
     
     <form>
-        <label id = "city-name-input">Enter City Name</label>
-        <input type="text" placeholder="City"/>
-        <button type="submit">Submit</button>
+        <label >Enter City Name</label>
+        <input type="text" placeholder="City" id = "city-name-input"/>
+        <button type="submit" id="btn">Submit</button>
 
     </form>
+
+
         
+    <div>
+        city/date/temp/widn/humidy/uv-index
+    </div>
+
+    <div>
+        5 day forecast
+    </div>
+
+    <div>
+        saved search history of citys
+    </div>
 
 
-
-
-
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./assets/script.js"></script>    
 </body>
 </html>
