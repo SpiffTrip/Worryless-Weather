@@ -1,5 +1,7 @@
 var inputEl = document.getElementById("city-name-input")
+
 var buttonEL = document.getElementById("btn")
+
 buttonEL,addEventListener("click", function(event){
     event.preventDefault()
    var city = inputEl.value 
@@ -22,7 +24,7 @@ function getLocation(city){
 
 
 function onecallApi(lat,long) {
-    var URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,daily&appid=4bbb93c538815e4e4cd4fc3a63e21c97`
+    var URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,daily&appid=4bbb93c538815e4e4cd4fc3a63e21c97&units=imperial`
     fetch(URL)
     .then(function(result){
         return result.json()
