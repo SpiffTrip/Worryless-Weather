@@ -2,7 +2,7 @@ var inputEl = document.getElementById("city-name-input")
 
 var buttonEL = document.getElementById("btn")
 
-buttonEL,addEventListener("click", function(event){
+buttonEL.addEventListener("click", function(event){
     event.preventDefault()
    var city = inputEl.value 
    console.log(city);
