@@ -1,6 +1,7 @@
 var inputEl = document.getElementById("city-name-input")
-
+var currentWeatherEl = document.getElementById("currentWeather")
 var buttonEL = document.getElementById("btn")
+var fiveForecastEl = document.getElementById("fiveForecast")
 
 buttonEL.addEventListener("click", function (event) {
     event.preventDefault()
@@ -14,33 +15,50 @@ function getLocation(city) {
     fetch(URL)
         .then(function (result) {
             return result.json()
-        }).then(function (apiresults) {
-            console.log(apiresults)
-            var lat = apiresults.coord.lat
-            var long = apiresults.coord.lon
-            onecallApi(lat, long) 
-            
-            var wind = apiresults.wind
-            var infoDiv = document.getElementById("info")
-            var pInfo = document.createElement("P")
+        }).then(function (apiResults) {
+            console.log(apiResults)
+            var lat = apiResults.coord.lat
+            var long = apiResults.coord.lon
+            onecallApi(lat, long)
 
-            pInfo.textContent = wind
-            infoDiv.appendChild(pInfo);
+            var cityName = apiResults.name
+            var cityNameEl = document.createElement("p")
+
+            cityNameEl.textContent = `${cityName}`
+            currentWeatherEl.appendChild(cityNameEl)
+
         })
 }
 
 
 function onecallApi(lat, long) {
-    var URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,daily&appid=4bbb93c538815e4e4cd4fc3a63e21c97&units=imperial`
+    var URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,minutely&appid=4bbb93c538815e4e4cd4fc3a63e21c97&units=imperial`
     fetch(URL)
         .then(function (result) {
             return result.json()
-        }).then(function (apiresults) {
-            console.log(apiresults)
-         
-        })
-       
+        }).then(function (apiResults) {
+            console.log(apiResults)
+            var wind = apiResults.current.wind_speed
+            var humid = apiResults.current.humidity
+            var temp = apiResults.current.temp
+
+            var windpEl = document.createElement("p")
+            var humidpEl = document.createElement("p")
+            var tempEl = document.createElement("p")
+
+            windpEl.textContent = `wind speed: ${wind}Mph`
+            currentWeatherEl.appendChild(windpEl);
            
+            humidpEl.textContent = `Humidity: ${humid}%`
+            currentWeatherEl.appendChild(humidpEl);
+            
+            tempEl.textContent = `Temperature: ${temp}`
+            currentWeatherEl.appendChild(tempEl);
+
+
+        })
+
+
 
 }
 
