@@ -1,6 +1,6 @@
 # Worryless-Weather
 ## Purpose
-A website that will (eventually) tell you the current weather and 5 day forecast of any city you 
+A website that will tell you the current weather and 5 day forecast of any city you 
 search for!
 
 ## Built with
